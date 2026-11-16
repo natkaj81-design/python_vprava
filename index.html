@@ -1,0 +1,416 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python: виведення даних</title><style>
+:root{font-family:system-ui,sans-serif;color:#27304e;background:#fff7e9}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 5%,#ffe2a9,transparent 35%),radial-gradient(circle at 90% 25%,#c6f4ee,transparent 35%),#fff7e9}.wrap{max-width:950px;margin:auto;padding:22px}header{background:#fff;border:4px solid #27304e;border-radius:28px;padding:22px;box-shadow:7px 8px 0 #27304e}h1{margin:0;font-size:clamp(27px,5vw,45px)}.subtitle{font-weight:650}.mascot{font-size:45px}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:22px 0}.pill{background:#fff;border:3px solid #27304e;border-radius:18px;padding:10px 14px;font-weight:750}select,input,textarea,button{font:inherit}select,input{padding:9px;border:2px solid #27304e;border-radius:12px;background:#fff}button{cursor:pointer;border:3px solid #27304e;background:#ffcb4c;color:#27304e;border-radius:14px;padding:10px 18px;font-weight:850;box-shadow:3px 4px 0 #27304e}button:hover{transform:translateY(-2px)}.progress{height:19px;background:white;border:3px solid #27304e;border-radius:20px;overflow:hidden}.bar{background:#4dd6a4;height:100%;width:0;transition:width .2s}.task{background:#fff;border:3px solid #27304e;border-radius:22px;padding:19px;margin:18px 0;box-shadow:5px 6px 0 #27304e}.task h3{margin:0 0 12px}.level{font-size:12px;background:#c9e8ff;border-radius:15px;padding:5px 10px;margin-left:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#252b48;color:#eafff3;border-radius:14px;padding:17px;font:16px/1.65 ui-monospace,Consolas,monospace}textarea{display:block;width:100%;min-height:70px;border:2px solid #929ab2;border-radius:12px;padding:12px;font:16px/1.5 ui-monospace,monospace;resize:vertical}.feedback{margin-top:10px;font-weight:750;white-space:pre-wrap}.good{color:#137e4b}.bad{color:#b0433e}.hint{font-size:13px;color:#59627d}.result{background:#d9fff1;border:3px solid #27304e;border-radius:20px;padding:20px;margin:24px 0;font-weight:800}footer{text-align:center;padding:30px;color:#59627d}@media(max-width:550px){.wrap{padding:12px}.task{padding:13px}button{width:100%}}
+</style></head><body><div class="wrap"><header><div class="mascot">🐍 🎮 ⭐</div><h1>Python: виведення даних</h1><p class="subtitle">Місія: передбач результат! 5 варіантів × 20 завдань</p><p>Уяви, що ти комп’ютер: уважно запиши <b>саме те</b>, що з’явиться на екрані. Кожен фрагмент — окрема програма.</p></header><div class="controls"><label class="pill">Варіант <select id="variant"><option value="0">1</option><option value="1">2</option><option value="2">3</option><option value="3">4</option><option value="4">5</option></select></label><span class="pill" id="score">Правильно: 0 / 20</span><button id="reset">Почати заново ↻</button></div><div class="progress"><div class="bar" id="bar"></div></div><p class="hint">Пробіли та перенесення рядків мають значення. Останній службовий перенос рядка після print() вводити не потрібно. Після помилки можна виправити відповідь і перевірити ще раз.</p><main id="tasks"></main><section class="result" id="result" hidden></section><footer>🐍 Навчайся, експериментуй, перевіряй!</footer></div><script id="data" type="application/json">[
+  [
+    {
+      "code": "print(\"Привіт, Оля!\")",
+      "answer": "Привіт, Оля!"
+    },
+    {
+      "code": "print(3, 6)",
+      "answer": "3 6"
+    },
+    {
+      "code": "print(\"Python\", \"урок\", 1, sep=\"-\")",
+      "answer": "Python-урок-1"
+    },
+    {
+      "code": "print(\"A\", \"B\", \"C\", sep=\" | \")",
+      "answer": "A | B | C"
+    },
+    {
+      "code": "print(\"Старт\", end=\"!\")\nprint(\"Готово\")",
+      "answer": "Старт!Готово"
+    },
+    {
+      "code": "print(\"Раз\", end=\" \")\nprint(\"Два\")",
+      "answer": "Раз Два"
+    },
+    {
+      "code": "x = 3\nprint(f\"Число: {x}\")",
+      "answer": "Число: 3"
+    },
+    {
+      "code": "x = 3\ny = 6\nprint(f\"Сума = {x + y}\")",
+      "answer": "Сума = 9"
+    },
+    {
+      "code": "name = \"Оля\"\nprint(f\"Вітаю, {name}!\")",
+      "answer": "Вітаю, Оля!"
+    },
+    {
+      "code": "city = \"Луцьк\"\nprint(f\"Місто: {city}\")",
+      "answer": "Місто: Луцьк"
+    },
+    {
+      "code": "print(\"Код\", 1, sep=\"\", end=\".\")",
+      "answer": "Код1."
+    },
+    {
+      "code": "print(\"Рівень\", 1, \"готовий\", sep=\"_\")",
+      "answer": "Рівень_1_готовий"
+    },
+    {
+      "code": "print(\"Оля\", end=\" → \")\nprint(\"Python\")",
+      "answer": "Оля → Python"
+    },
+    {
+      "code": "x = 3\nprint(f\"Подвоєне: {x * 2}\")",
+      "answer": "Подвоєне: 6"
+    },
+    {
+      "code": "print(\"Луцьк\", \"Україна\", sep=\" — \")",
+      "answer": "Луцьк — Україна"
+    },
+    {
+      "code": "print(\"Крок 1\", end=\"; \")\nprint(\"Крок 2\", end=\"; \")\nprint(\"Фініш\")",
+      "answer": "Крок 1; Крок 2; Фініш"
+    },
+    {
+      "code": "x = 3\ny = 6\nprint(f\"{x} + {y} = {x + y}\")",
+      "answer": "3 + 6 = 9"
+    },
+    {
+      "code": "print(\"A\", \"B\", sep=\"\", end=\"!\")\nprint(\"C\", \"D\", sep=\"-\")",
+      "answer": "AB!C-D"
+    },
+    {
+      "code": "price = 30\ncount = 2\nprint(f\"Разом: {price * count} грн\")",
+      "answer": "Разом: 60 грн"
+    },
+    {
+      "code": "print(\"Початок\")\nprint(\"Оля\", \"Луцьк\", sep=\" / \", end=\"!\")\nprint(\" Успіх\")",
+      "answer": "Початок\nОля / Луцьк! Успіх"
+    }
+  ],
+  [
+    {
+      "code": "print(\"Привіт, Іван!\")",
+      "answer": "Привіт, Іван!"
+    },
+    {
+      "code": "print(4, 7)",
+      "answer": "4 7"
+    },
+    {
+      "code": "print(\"Python\", \"урок\", 2, sep=\"-\")",
+      "answer": "Python-урок-2"
+    },
+    {
+      "code": "print(\"A\", \"B\", \"C\", sep=\" | \")",
+      "answer": "A | B | C"
+    },
+    {
+      "code": "print(\"Старт\", end=\"!\")\nprint(\"Готово\")",
+      "answer": "Старт!Готово"
+    },
+    {
+      "code": "print(\"Раз\", end=\" \")\nprint(\"Два\")",
+      "answer": "Раз Два"
+    },
+    {
+      "code": "x = 4\nprint(f\"Число: {x}\")",
+      "answer": "Число: 4"
+    },
+    {
+      "code": "x = 4\ny = 7\nprint(f\"Сума = {x + y}\")",
+      "answer": "Сума = 11"
+    },
+    {
+      "code": "name = \"Іван\"\nprint(f\"Вітаю, {name}!\")",
+      "answer": "Вітаю, Іван!"
+    },
+    {
+      "code": "city = \"Львів\"\nprint(f\"Місто: {city}\")",
+      "answer": "Місто: Львів"
+    },
+    {
+      "code": "print(\"Код\", 2, sep=\"\", end=\".\")",
+      "answer": "Код2."
+    },
+    {
+      "code": "print(\"Рівень\", 2, \"готовий\", sep=\"_\")",
+      "answer": "Рівень_2_готовий"
+    },
+    {
+      "code": "print(\"Іван\", end=\" → \")\nprint(\"Python\")",
+      "answer": "Іван → Python"
+    },
+    {
+      "code": "x = 4\nprint(f\"Подвоєне: {x * 2}\")",
+      "answer": "Подвоєне: 8"
+    },
+    {
+      "code": "print(\"Львів\", \"Україна\", sep=\" — \")",
+      "answer": "Львів — Україна"
+    },
+    {
+      "code": "print(\"Крок 1\", end=\"; \")\nprint(\"Крок 2\", end=\"; \")\nprint(\"Фініш\")",
+      "answer": "Крок 1; Крок 2; Фініш"
+    },
+    {
+      "code": "x = 4\ny = 7\nprint(f\"{x} + {y} = {x + y}\")",
+      "answer": "4 + 7 = 11"
+    },
+    {
+      "code": "print(\"A\", \"B\", sep=\"\", end=\"!\")\nprint(\"C\", \"D\", sep=\"-\")",
+      "answer": "AB!C-D"
+    },
+    {
+      "code": "price = 40\ncount = 3\nprint(f\"Разом: {price * count} грн\")",
+      "answer": "Разом: 120 грн"
+    },
+    {
+      "code": "print(\"Початок\")\nprint(\"Іван\", \"Львів\", sep=\" / \", end=\"!\")\nprint(\" Успіх\")",
+      "answer": "Початок\nІван / Львів! Успіх"
+    }
+  ],
+  [
+    {
+      "code": "print(\"Привіт, Марія!\")",
+      "answer": "Привіт, Марія!"
+    },
+    {
+      "code": "print(5, 8)",
+      "answer": "5 8"
+    },
+    {
+      "code": "print(\"Python\", \"урок\", 3, sep=\"-\")",
+      "answer": "Python-урок-3"
+    },
+    {
+      "code": "print(\"A\", \"B\", \"C\", sep=\" | \")",
+      "answer": "A | B | C"
+    },
+    {
+      "code": "print(\"Старт\", end=\"!\")\nprint(\"Готово\")",
+      "answer": "Старт!Готово"
+    },
+    {
+      "code": "print(\"Раз\", end=\" \")\nprint(\"Два\")",
+      "answer": "Раз Два"
+    },
+    {
+      "code": "x = 5\nprint(f\"Число: {x}\")",
+      "answer": "Число: 5"
+    },
+    {
+      "code": "x = 5\ny = 8\nprint(f\"Сума = {x + y}\")",
+      "answer": "Сума = 13"
+    },
+    {
+      "code": "name = \"Марія\"\nprint(f\"Вітаю, {name}!\")",
+      "answer": "Вітаю, Марія!"
+    },
+    {
+      "code": "city = \"Київ\"\nprint(f\"Місто: {city}\")",
+      "answer": "Місто: Київ"
+    },
+    {
+      "code": "print(\"Код\", 3, sep=\"\", end=\".\")",
+      "answer": "Код3."
+    },
+    {
+      "code": "print(\"Рівень\", 3, \"готовий\", sep=\"_\")",
+      "answer": "Рівень_3_готовий"
+    },
+    {
+      "code": "print(\"Марія\", end=\" → \")\nprint(\"Python\")",
+      "answer": "Марія → Python"
+    },
+    {
+      "code": "x = 5\nprint(f\"Подвоєне: {x * 2}\")",
+      "answer": "Подвоєне: 10"
+    },
+    {
+      "code": "print(\"Київ\", \"Україна\", sep=\" — \")",
+      "answer": "Київ — Україна"
+    },
+    {
+      "code": "print(\"Крок 1\", end=\"; \")\nprint(\"Крок 2\", end=\"; \")\nprint(\"Фініш\")",
+      "answer": "Крок 1; Крок 2; Фініш"
+    },
+    {
+      "code": "x = 5\ny = 8\nprint(f\"{x} + {y} = {x + y}\")",
+      "answer": "5 + 8 = 13"
+    },
+    {
+      "code": "print(\"A\", \"B\", sep=\"\", end=\"!\")\nprint(\"C\", \"D\", sep=\"-\")",
+      "answer": "AB!C-D"
+    },
+    {
+      "code": "price = 50\ncount = 4\nprint(f\"Разом: {price * count} грн\")",
+      "answer": "Разом: 200 грн"
+    },
+    {
+      "code": "print(\"Початок\")\nprint(\"Марія\", \"Київ\", sep=\" / \", end=\"!\")\nprint(\" Успіх\")",
+      "answer": "Початок\nМарія / Київ! Успіх"
+    }
+  ],
+  [
+    {
+      "code": "print(\"Привіт, Данило!\")",
+      "answer": "Привіт, Данило!"
+    },
+    {
+      "code": "print(6, 9)",
+      "answer": "6 9"
+    },
+    {
+      "code": "print(\"Python\", \"урок\", 4, sep=\"-\")",
+      "answer": "Python-урок-4"
+    },
+    {
+      "code": "print(\"A\", \"B\", \"C\", sep=\" | \")",
+      "answer": "A | B | C"
+    },
+    {
+      "code": "print(\"Старт\", end=\"!\")\nprint(\"Готово\")",
+      "answer": "Старт!Готово"
+    },
+    {
+      "code": "print(\"Раз\", end=\" \")\nprint(\"Два\")",
+      "answer": "Раз Два"
+    },
+    {
+      "code": "x = 6\nprint(f\"Число: {x}\")",
+      "answer": "Число: 6"
+    },
+    {
+      "code": "x = 6\ny = 9\nprint(f\"Сума = {x + y}\")",
+      "answer": "Сума = 15"
+    },
+    {
+      "code": "name = \"Данило\"\nprint(f\"Вітаю, {name}!\")",
+      "answer": "Вітаю, Данило!"
+    },
+    {
+      "code": "city = \"Рівне\"\nprint(f\"Місто: {city}\")",
+      "answer": "Місто: Рівне"
+    },
+    {
+      "code": "print(\"Код\", 4, sep=\"\", end=\".\")",
+      "answer": "Код4."
+    },
+    {
+      "code": "print(\"Рівень\", 4, \"готовий\", sep=\"_\")",
+      "answer": "Рівень_4_готовий"
+    },
+    {
+      "code": "print(\"Данило\", end=\" → \")\nprint(\"Python\")",
+      "answer": "Данило → Python"
+    },
+    {
+      "code": "x = 6\nprint(f\"Подвоєне: {x * 2}\")",
+      "answer": "Подвоєне: 12"
+    },
+    {
+      "code": "print(\"Рівне\", \"Україна\", sep=\" — \")",
+      "answer": "Рівне — Україна"
+    },
+    {
+      "code": "print(\"Крок 1\", end=\"; \")\nprint(\"Крок 2\", end=\"; \")\nprint(\"Фініш\")",
+      "answer": "Крок 1; Крок 2; Фініш"
+    },
+    {
+      "code": "x = 6\ny = 9\nprint(f\"{x} + {y} = {x + y}\")",
+      "answer": "6 + 9 = 15"
+    },
+    {
+      "code": "print(\"A\", \"B\", sep=\"\", end=\"!\")\nprint(\"C\", \"D\", sep=\"-\")",
+      "answer": "AB!C-D"
+    },
+    {
+      "code": "price = 60\ncount = 5\nprint(f\"Разом: {price * count} грн\")",
+      "answer": "Разом: 300 грн"
+    },
+    {
+      "code": "print(\"Початок\")\nprint(\"Данило\", \"Рівне\", sep=\" / \", end=\"!\")\nprint(\" Успіх\")",
+      "answer": "Початок\nДанило / Рівне! Успіх"
+    }
+  ],
+  [
+    {
+      "code": "print(\"Привіт, Софія!\")",
+      "answer": "Привіт, Софія!"
+    },
+    {
+      "code": "print(7, 10)",
+      "answer": "7 10"
+    },
+    {
+      "code": "print(\"Python\", \"урок\", 5, sep=\"-\")",
+      "answer": "Python-урок-5"
+    },
+    {
+      "code": "print(\"A\", \"B\", \"C\", sep=\" | \")",
+      "answer": "A | B | C"
+    },
+    {
+      "code": "print(\"Старт\", end=\"!\")\nprint(\"Готово\")",
+      "answer": "Старт!Готово"
+    },
+    {
+      "code": "print(\"Раз\", end=\" \")\nprint(\"Два\")",
+      "answer": "Раз Два"
+    },
+    {
+      "code": "x = 7\nprint(f\"Число: {x}\")",
+      "answer": "Число: 7"
+    },
+    {
+      "code": "x = 7\ny = 10\nprint(f\"Сума = {x + y}\")",
+      "answer": "Сума = 17"
+    },
+    {
+      "code": "name = \"Софія\"\nprint(f\"Вітаю, {name}!\")",
+      "answer": "Вітаю, Софія!"
+    },
+    {
+      "code": "city = \"Одеса\"\nprint(f\"Місто: {city}\")",
+      "answer": "Місто: Одеса"
+    },
+    {
+      "code": "print(\"Код\", 5, sep=\"\", end=\".\")",
+      "answer": "Код5."
+    },
+    {
+      "code": "print(\"Рівень\", 5, \"готовий\", sep=\"_\")",
+      "answer": "Рівень_5_готовий"
+    },
+    {
+      "code": "print(\"Софія\", end=\" → \")\nprint(\"Python\")",
+      "answer": "Софія → Python"
+    },
+    {
+      "code": "x = 7\nprint(f\"Подвоєне: {x * 2}\")",
+      "answer": "Подвоєне: 14"
+    },
+    {
+      "code": "print(\"Одеса\", \"Україна\", sep=\" — \")",
+      "answer": "Одеса — Україна"
+    },
+    {
+      "code": "print(\"Крок 1\", end=\"; \")\nprint(\"Крок 2\", end=\"; \")\nprint(\"Фініш\")",
+      "answer": "Крок 1; Крок 2; Фініш"
+    },
+    {
+      "code": "x = 7\ny = 10\nprint(f\"{x} + {y} = {x + y}\")",
+      "answer": "7 + 10 = 17"
+    },
+    {
+      "code": "print(\"A\", \"B\", sep=\"\", end=\"!\")\nprint(\"C\", \"D\", sep=\"-\")",
+      "answer": "AB!C-D"
+    },
+    {
+      "code": "price = 70\ncount = 6\nprint(f\"Разом: {price * count} грн\")",
+      "answer": "Разом: 420 грн"
+    },
+    {
+      "code": "print(\"Початок\")\nprint(\"Софія\", \"Одеса\", sep=\" / \", end=\"!\")\nprint(\" Успіх\")",
+      "answer": "Початок\nСофія / Одеса! Успіх"
+    }
+  ]
+]</script><script>
+const variants=JSON.parse(document.getElementById('data').textContent);let variant=0,entries=[],solved=[],attempts=[];const $=id=>document.getElementById(id);function norm(s){return s.replace(/\r\n?/g,'\n').replace(/\n+$/,'')};function save(){sessionStorage.setItem('python-print-v'+variant,JSON.stringify({entries,solved,attempts}))}function load(){try{let x=JSON.parse(sessionStorage.getItem('python-print-v'+variant));entries=x?.entries||Array(20).fill('');solved=x?.solved||Array(20).fill(false);attempts=x?.attempts||Array(20).fill(0)}catch{entries=Array(20).fill('');solved=Array(20).fill(false);attempts=Array(20).fill(0)}}function update(){let count=solved.filter(Boolean).length;$('score').textContent=`Правильно: ${count} / 20`;$('bar').style.width=(count*5)+'%';$('result').hidden=count!==20;if(count===20){let total=attempts.reduce((a,b)=>a+b,0);$('result').textContent=`🏆 Місію виконано! 20 / 20 правильних. Оцінка: 12 балів. Усього перевірок: ${total}.`}}function render(){load();$('tasks').replaceChildren();variants[variant].forEach((t,i)=>{let card=document.createElement('article');card.className='task';let h=document.createElement('h3');h.textContent=`⭐ Завдання ${i+1}`;let level=document.createElement('span');level.className='level';level.textContent=i<7?'Розминка':i<14?'Дослідник':'Майстер';h.append(level);let pre=document.createElement('pre');pre.textContent=t.code;let area=document.createElement('textarea');area.placeholder='Введи точний результат виведення…';area.setAttribute('aria-label',`Відповідь до завдання ${i+1}`);area.value=entries[i]||'';area.disabled=!!solved[i];let btn=document.createElement('button');btn.textContent=solved[i]?'✓ Виконано':'Перевірити ✓';btn.disabled=!!solved[i];let fb=document.createElement('div');fb.className='feedback';if(solved[i]){fb.textContent='✅ Правильно!';fb.classList.add('good')}area.addEventListener('input',()=>{entries[i]=area.value;fb.textContent='';fb.className='feedback';save()});btn.addEventListener('click',()=>{entries[i]=area.value;attempts[i]++;if(norm(area.value)===norm(t.answer)){solved[i]=true;area.disabled=true;btn.disabled=true;btn.textContent='✓ Виконано';fb.textContent='✅ Правильно! Чудова робота!';fb.className='feedback good'}else{fb.textContent='❌ Поки неправильно. Перевір пробіли, символи, sep, end та перенесення рядків.';fb.className='feedback bad'}save();update()});card.append(h,pre,area,btn,fb);$('tasks').append(card)});update()}$('variant').addEventListener('change',e=>{variant=Number(e.target.value);render();window.scrollTo(0,0)});$('reset').addEventListener('click',()=>{if(confirm('Очистити відповіді поточного варіанта?')){sessionStorage.removeItem('python-print-v'+variant);render()}});render();
+</script></body></html>
